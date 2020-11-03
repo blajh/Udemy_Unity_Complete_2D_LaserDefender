@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject _laserPrefab;
     [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private float _projectileFiringPeriod = 0.1f;
+    private Coroutine _firingCoroutine;
 
     [SerializeField] private float _moveSpeed = 1f;
 
@@ -24,13 +26,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
 		SetUpMoveBoundaries();
-		StartCoroutine(TestCoroutine());
-	}
-
-	IEnumerator TestCoroutine() {
-        Debug.Log("Coroutine started");
-		yield return new WaitForSeconds(3f);
-        Debug.Log("Coroutine ended");
 	}
 
 	// Update is called once per frame
@@ -50,14 +45,24 @@ public class Player : MonoBehaviour
     }
 
 	private void Fire() {
-        if (Input.GetButtonDown ("Fire1")) {
-            GameObject _laser = Instantiate
+        if (Input.GetButtonDown("Fire1")) {
+            _firingCoroutine = StartCoroutine(FireContinuosly());
+		}
+        if (Input.GetButtonUp("Fire1")) {
+            StopCoroutine(_firingCoroutine);
+        }
+    }
+
+	IEnumerator FireContinuosly() {
+		while (true) {
+			GameObject _laser = Instantiate
 				(_laserPrefab, transform.position, Quaternion.identity)
 				as GameObject;
-            _laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
+			_laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
+			yield return new WaitForSeconds(_projectileFiringPeriod);
 		}
 	}
-	
+
 	private void SetUpMoveBoundaries() {
 		Camera _gameCamera = Camera.main;
         _xMinWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(_xMinViewPos, 0, 0)).x;

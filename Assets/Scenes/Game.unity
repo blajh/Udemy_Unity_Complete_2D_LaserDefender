@@ -197,17 +197,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3148145965139764740, guid: d2ffbec68ee8449f88fe0b106a1d273e,
-        type: 3}
-      propertyPath: _laserPrefab
-      value: 
-      objectReference: {fileID: 2251932772949512313, guid: 9ca3320aee5c44411ac0cad34f5b08d3,
-        type: 3}
-    - target: {fileID: 3148145965139764740, guid: d2ffbec68ee8449f88fe0b106a1d273e,
-        type: 3}
-      propertyPath: _projectileSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3148145965139764794, guid: d2ffbec68ee8449f88fe0b106a1d273e,
         type: 3}
       propertyPath: m_LocalPosition.x
