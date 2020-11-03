@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    [SerializeField] private GameObject _laserPrefab;
+    [SerializeField] private float _projectileSpeed = 10f;
+
     [SerializeField] private float _moveSpeed = 1f;
 
     private float _xMinViewPos = 0.07f;
@@ -23,18 +27,11 @@ public class Player : MonoBehaviour
         SetUpMoveBoundaries();
     }
 
-	private void SetUpMoveBoundaries() {
-		Camera _gameCamera = Camera.main;
-        _xMinWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(_xMinViewPos, 0, 0)).x;
-		_xMaxWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(_xMaxViewPos, 0, 0)).x;
-        _yMinWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(0, _yMinViewPos, 0)).y;
-        _yMaxWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(0, _yMaxViewPos, 0)).y;
-    }
-
 	// Update is called once per frame
 	void Update()
     {
         Move();
+        Fire();
     }
 
     private void Move() {
@@ -45,4 +42,22 @@ public class Player : MonoBehaviour
         var _newYPos = Mathf.Clamp (transform.position.y + _deltaY, _yMinWorldPos, _yMaxWorldPos);
         transform.position = new Vector2(_newXPos, _newYPos);
     }
+
+	private void Fire() {
+        if (Input.GetButtonDown ("Fire1")) {
+            GameObject _laser = Instantiate
+				(_laserPrefab, transform.position, Quaternion.identity)
+				as GameObject;
+            _laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
+		}
+	}
+	
+	private void SetUpMoveBoundaries() {
+		Camera _gameCamera = Camera.main;
+        _xMinWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(_xMinViewPos, 0, 0)).x;
+		_xMaxWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(_xMaxViewPos, 0, 0)).x;
+        _yMinWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(0, _yMinViewPos, 0)).y;
+        _yMaxWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(0, _yMaxViewPos, 0)).y;
+    }
+
 }
