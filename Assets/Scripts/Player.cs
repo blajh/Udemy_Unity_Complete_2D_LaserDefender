@@ -22,10 +22,16 @@ public class Player : MonoBehaviour
     private float _yMaxWorldPos;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        SetUpMoveBoundaries();
-    }
+    void Start() {
+		SetUpMoveBoundaries();
+		StartCoroutine(TestCoroutine());
+	}
+
+	IEnumerator TestCoroutine() {
+        Debug.Log("Coroutine started");
+		yield return new WaitForSeconds(3f);
+        Debug.Log("Coroutine ended");
+	}
 
 	// Update is called once per frame
 	void Update()
