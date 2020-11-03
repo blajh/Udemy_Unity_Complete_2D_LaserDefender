@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 0.1f;
+    [SerializeField] private float _moveSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,36 +16,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ListenForInput();
+        Move();
     }
 
-    private void ListenForInput() {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-            UpdatePosition("UpArrow");
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            UpdatePosition("LeftArrow");
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-            UpdatePosition("DownArrow");
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            UpdatePosition("RightArrow");
-        }
-    }
-
-	private void UpdatePosition(string _direction) {
-		if (_direction == "UpArrow") {
-			transform.Translate(new Vector3(0f, _moveSpeed * Time.deltaTime, 0f));
-		}
-		else if(_direction == "LeftArrow") {
-            transform.Translate(new Vector3(- _moveSpeed * Time.deltaTime, 0f, 0f));
-        }
-        else if (_direction == "DownArrow") {
-            transform.Translate(new Vector3(0f, - _moveSpeed * Time.deltaTime, 0f));
-        }
-        else if (_direction == "RightArrow") {
-            transform.Translate(new Vector3(_moveSpeed * Time.deltaTime, 0f, 0f));
-        }
+    private void Move() {
+        var _deltaX = Input.GetAxis("Horizontal");
+        var _posX = transform.position.x + _deltaX * Time.deltaTime * _moveSpeed;
+        var _deltaY = Input.GetAxis("Vertical");
+        var _posY = transform.position.y + _deltaY * Time.deltaTime * _moveSpeed;
+        transform.position = new Vector2(_posX, _posY);
     }
 }
