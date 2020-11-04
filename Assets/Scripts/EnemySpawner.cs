@@ -14,11 +14,13 @@ public class EnemySpawner : MonoBehaviour
 	}
 
 	IEnumerator SpawnAllEnemiesInWave(WaveConfigSO _waveConfigSO) {
-		Instantiate
-			(_waveConfigSO.GetEnemyPrefab(),
-			_waveConfigSO.GetWayPoints()[0].transform.position,
-			Quaternion.identity);
+		for (int _spawned = 0; _spawned < _waveConfigSO.GetEnemyCount(); _spawned++) {
+			Instantiate
+				(_waveConfigSO.GetEnemyPrefab(),
+				_waveConfigSO.GetWayPoints()[0].transform.position,
+				Quaternion.identity);
+			yield return new WaitForSeconds(_waveConfigSO.GetSpawnPeriod());
+		}
 
-		yield return new WaitForSeconds(_waveConfigSO.GetSpawnPeriod());
 	}
 }
