@@ -5,16 +5,18 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "EnemyWaveConfigSO")]
 public class WaveConfigSO : ScriptableObject
 {
-    [SerializeField] private GameObject _enemyPrefab;
-	[SerializeField] private GameObject _pathPrefab;
-	[SerializeField] private float _spawnTime = 0.5f;
-	[SerializeField] private float _spawnTimeOffset = 0.3f;
-	[SerializeField] private float _moveSpeed = 2f;
+	[Header("Enemy Config")]
+	[SerializeField] private GameObject _enemyPrefab;
 	[SerializeField] private int _enemyCount = 5;
+	[SerializeField] private float _moveSpeed = 2f;
+	[SerializeField] private float _spawnPeriod= 0.5f;
+	[SerializeField] private float _spawnPeriodOffset = 0.3f;
+	[Header("Path")]
+	[SerializeField] private GameObject _pathPrefab;
 
 	public GameObject GetEnemyPrefab() { return _enemyPrefab; }
-	public float GetSpawnTime() { return _spawnTime; }
-	public float GetSpawnTimeOffset() { return _spawnTimeOffset; }
+	public float GetSpawnPeriod() { return _spawnPeriod; }
+	public float GetSpawnPeriodOffset() { return _spawnPeriodOffset; }
 	public float GetMoveSpeed() { return _moveSpeed; }
 	public int GetEnemyCount() { return _enemyCount; } 
 
