@@ -13,10 +13,17 @@ public class WaveConfigSO : ScriptableObject
 	[SerializeField] private int _enemyCount = 5;
 
 	public GameObject GetEnemyPrefab() { return _enemyPrefab; }
-	public GameObject GetPathPrefab() { return _pathPrefab; }
 	public float GetSpawnTime() { return _spawnTime; }
 	public float GetSpawnTimeOffset() { return _spawnTimeOffset; }
 	public float GetMoveSpeed() { return _moveSpeed; }
-	public int GetEnemyCount() { return _enemyCount; }
+	public int GetEnemyCount() { return _enemyCount; } 
 
+	public List<Transform> GetWayPoints() {
+		var _waveWaypoints = new List<Transform>();
+		foreach (Transform _child in _pathPrefab.transform) {
+			_waveWaypoints.Add(_child);
+		}
+
+		return _waveWaypoints;
+	}
 }
