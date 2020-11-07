@@ -6,12 +6,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _laserPrefab;
-    [SerializeField] private float _projectileSpeed = 10f;
-    [SerializeField] private float _projectileFiringPeriod = 0.1f;
-    private Coroutine _firingCoroutine;
-
+	[Header("Player")]
     [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _health = 200;
 
     private float _xMinViewPos = 0.07f;
     private float _xMaxViewPos = 0.93f;
@@ -22,6 +19,13 @@ public class Player : MonoBehaviour
     private float _yMaxViewPos = 0.97f;
     private float _yMinWorldPos;
     private float _yMaxWorldPos;
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject _laserPrefab;
+    [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private float _projectileFiringPeriod = 0.1f;
+
+    private Coroutine _firingCoroutine;
 
     // Start is called before the first frame update
     void Start() {
@@ -71,4 +75,16 @@ public class Player : MonoBehaviour
         _yMaxWorldPos = _gameCamera.ViewportToWorldPoint(new Vector3(0, _yMaxViewPos, 0)).y;
     }
 
+	private void OnTriggerEnter2D(Collider2D other) {
+        DamageDealer _damageDealer = other.gameObject.GetComponent<DamageDealer>();
+		ProcessHit(_damageDealer);
+	}
+
+	private void ProcessHit(DamageDealer _damageDealer) {
+        _health -= _damageDealer.GetDamage();
+        _damageDealer.Hit();
+        if (_health <= 0) {
+            Destroy(gameObject);
+        }
+    }
 }
