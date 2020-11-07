@@ -108,7 +108,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94607247d19764da2b4056a8d189d3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  _health: 100
+  _shotCounter: 0
+  _minTimeBetweenShots: 0.2
+  _maxTimeBetweenShots: 3
+  _laserPrefab: {fileID: 5813286672941581957, guid: 4d0b15bfc9cd7436385b4df1bd201468,
+    type: 3}
+  _projectileSpeed: 10
 --- !u!58 &6154560267917452996
 CircleCollider2D:
   m_ObjectHideFlags: 0
