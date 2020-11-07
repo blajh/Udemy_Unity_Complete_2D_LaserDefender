@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 256393221}
   - component: {fileID: 256393220}
   m_Layer: 0
-  m_Name: StarfieldFurther
+  m_Name: StarfieldFar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5160,7 +5160,7 @@ GameObject:
   - component: {fileID: 1841176881}
   - component: {fileID: 1841176880}
   m_Layer: 0
-  m_Name: StarfieldCloser
+  m_Name: StarfieldClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6063,7 +6063,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
