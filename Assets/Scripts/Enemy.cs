@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float _projectileSpeed = 10f;
 
 	private void Start() {
-		RandomiseShotDuration();
+		RandomiseShotDuration(); 
 	}
 
 	private void Update() {
@@ -37,7 +37,9 @@ public class Enemy : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		DamageDealer _damageDealer = other.gameObject.GetComponent<DamageDealer>();
-		ProcessHit(_damageDealer);
+		if (_damageDealer != null) {
+			ProcessHit(_damageDealer);
+		}
 	}
 
 	private void ProcessHit(DamageDealer _damageDealer) {

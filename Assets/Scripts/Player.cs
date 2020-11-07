@@ -77,7 +77,9 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other) {
         DamageDealer _damageDealer = other.gameObject.GetComponent<DamageDealer>();
-		ProcessHit(_damageDealer);
+		if (_damageDealer != null) {
+			ProcessHit(_damageDealer);
+		}
 	}
 
 	private void ProcessHit(DamageDealer _damageDealer) {
