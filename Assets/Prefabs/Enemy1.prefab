@@ -117,6 +117,11 @@ MonoBehaviour:
   _projectileSpeed: 10
   _explosionParticles: {fileID: 8844208462668955407, guid: 173560df3911a476eb3242072e1e1e03,
     type: 3}
+  _explosionDuration: 1
+  _enemyLaserSFX: {fileID: 8300000, guid: af42f98e1703e40a8a8bdafb44edb6e8, type: 3}
+  _enemyLaserSFXVolume: 0.8
+  _enemyDeathSFX: {fileID: 8300000, guid: 653ad74759bb04322b612f0a6e8e661b, type: 3}
+  _enemyDeathSFXVolume: 0.8
 --- !u!58 &-2687634604293308802
 CircleCollider2D:
   m_ObjectHideFlags: 0

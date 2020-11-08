@@ -26,12 +26,22 @@ public class Player : MonoBehaviour
     [SerializeField] private float _projectileFiringPeriod = 0.1f;
 
     private Coroutine _firingCoroutine;
+
+    [Header("Explosion Particles")]
     [SerializeField] private GameObject _explosionParticles;
     [SerializeField] private float _explosionDuration = 1f;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip _playerLaserSFX;
+    [SerializeField, Range (0f, 1f)] private float _playerLaserSFXVolume = 0.8f;
+    [SerializeField] private AudioClip _playerDeathSFX;
+    [SerializeField, Range(0f, 1f)] private float _playerDeathSFXVolume = 0.8f;
+    private Vector3 cameraPos;
 
     // Start is called before the first frame update
     void Start() {
 		SetUpMoveBoundaries();
+        cameraPos = Camera.main.transform.position;
 	}
 
 	// Update is called once per frame
@@ -53,7 +63,7 @@ public class Player : MonoBehaviour
 	private void Fire() {
         if (Input.GetButtonDown("Fire1")) {
             _firingCoroutine = StartCoroutine(FireContinuosly());
-		}
+        }
         if (Input.GetButtonUp("Fire1")) {
             StopCoroutine(_firingCoroutine);
         }
@@ -65,6 +75,7 @@ public class Player : MonoBehaviour
 				(_laserPrefab, transform.position, Quaternion.identity)
 				as GameObject;
 			_laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _projectileSpeed);
+            PlayClipAtPoint(_playerLaserSFX, _playerLaserSFXVolume);
 			yield return new WaitForSeconds(_projectileFiringPeriod);
 		}
 	}
@@ -88,15 +99,24 @@ public class Player : MonoBehaviour
         _health -= _damageDealer.GetDamage();
         _damageDealer.Hit();
         if (_health <= 0) {
-            SpawnExplosionParicles();
-            Destroy(gameObject);
-        }
-    }
+			Die();
+		}
+	}
 
-    private void SpawnExplosionParicles() {
+	private void Die() {
+        PlayClipAtPoint(_playerDeathSFX, _playerDeathSFXVolume);
+		SpawnExplosionParicles();
+		Destroy(gameObject);
+	}
+
+	private void SpawnExplosionParicles() {
         GameObject explosionParticles = Instantiate
             (_explosionParticles, transform.position, Quaternion.identity)
             as GameObject;
         Destroy(explosionParticles, _explosionDuration);
     }
+
+	private void PlayClipAtPoint(AudioClip audioClip, float audioVolume) {
+        AudioSource.PlayClipAtPoint(audioClip, cameraPos, audioVolume);
+	}
 }
