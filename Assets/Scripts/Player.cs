@@ -122,4 +122,8 @@ public class Player : MonoBehaviour
 	private void PlayClipAtPoint(AudioClip audioClip, float audioVolume) {
         AudioSource.PlayClipAtPoint(audioClip, cameraPos, audioVolume);
 	}
+
+	public float GetHealth() {
+        return _health;
+	}
 }
