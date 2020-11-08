@@ -115,6 +115,8 @@ MonoBehaviour:
   _laserPrefab: {fileID: 5813286672941581957, guid: 4d0b15bfc9cd7436385b4df1bd201468,
     type: 3}
   _projectileSpeed: 10
+  _explosionParticles: {fileID: 8844208462668955407, guid: 173560df3911a476eb3242072e1e1e03,
+    type: 3}
 --- !u!58 &-2687634604293308802
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -101,6 +101,8 @@ MonoBehaviour:
     type: 3}
   _projectileSpeed: 10
   _projectileFiringPeriod: 0.1
+  _explosionParticles: {fileID: 8844208462668955407, guid: 173560df3911a476eb3242072e1e1e03,
+    type: 3}
 --- !u!60 &3070603806109139707
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private GameObject _laserPrefab;
 	[SerializeField] private float _projectileSpeed = 10f;
 
+	[SerializeField] private GameObject _explosionParticles;
+	[SerializeField] private float _explosionDuration = 1f;
+
 	private void Start() {
 		RandomiseShotDuration(); 
 	}
@@ -35,6 +38,10 @@ public class Enemy : MonoBehaviour
 		_laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, - _projectileSpeed);
 	}
 
+	private void RandomiseShotDuration() {
+		_shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
+	}
+
 	private void OnTriggerEnter2D(Collider2D other) {
 		DamageDealer _damageDealer = other.gameObject.GetComponent<DamageDealer>();
 		if (_damageDealer != null) {
@@ -46,11 +53,19 @@ public class Enemy : MonoBehaviour
 		_health -= _damageDealer.GetDamage();
 		_damageDealer.Hit();
 		if (_health <= 0) {
-			Destroy(gameObject);
+			Die();
 		}
 	}
 
-	private void RandomiseShotDuration() {
-		_shotCounter = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
+	private void Die() {
+		SpawnExplosionParicles();
+		Destroy(gameObject);
+	}
+
+	private void SpawnExplosionParicles() {
+		GameObject explosionParticles = Instantiate
+			(_explosionParticles, transform.position, Quaternion.identity)
+			as GameObject;
+		Destroy(explosionParticles, _explosionDuration);
 	}
 }

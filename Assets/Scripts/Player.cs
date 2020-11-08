@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _projectileFiringPeriod = 0.1f;
 
     private Coroutine _firingCoroutine;
+    [SerializeField] private GameObject _explosionParticles;
+    [SerializeField] private float _explosionDuration = 1f;
 
     // Start is called before the first frame update
     void Start() {
@@ -86,7 +88,15 @@ public class Player : MonoBehaviour
         _health -= _damageDealer.GetDamage();
         _damageDealer.Hit();
         if (_health <= 0) {
+            SpawnExplosionParicles();
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnExplosionParicles() {
+        GameObject explosionParticles = Instantiate
+            (_explosionParticles, transform.position, Quaternion.identity)
+            as GameObject;
+        Destroy(explosionParticles, _explosionDuration);
     }
 }
