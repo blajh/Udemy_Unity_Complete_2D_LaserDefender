@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour
         PlayClipAtPoint(_playerDeathSFX, _playerDeathSFXVolume);
 		SpawnExplosionParicles();
 		Destroy(gameObject);
+        SceneManager.LoadScene(2);
 	}
 
 	private void SpawnExplosionParicles() {
