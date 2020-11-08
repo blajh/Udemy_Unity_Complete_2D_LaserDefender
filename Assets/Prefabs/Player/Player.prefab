@@ -105,7 +105,7 @@ MonoBehaviour:
     type: 3}
   _explosionDuration: 1
   _playerLaserSFX: {fileID: 8300000, guid: e77ee2aa3915e44e3ad950acbb375130, type: 3}
-  _playerLaserSFXVolume: 0.8
+  _playerLaserSFXVolume: 0.75
   _playerDeathSFX: {fileID: 8300000, guid: 7560ecd980c874ae9a62479524e6e784, type: 3}
   _playerDeathSFXVolume: 0.8
 --- !u!60 &3070603806109139707

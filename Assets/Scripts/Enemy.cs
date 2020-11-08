@@ -25,9 +25,12 @@ public class Enemy : MonoBehaviour
 	[SerializeField, Range(0f, 1f)] private float _enemyDeathSFXVolume = 0.8f;
 	private Vector3 cameraPos;
 
+	private GameSession _gameSession;
+
 	private void Start() {
 		RandomiseShotDuration();
 		cameraPos = Camera.main.transform.position;
+		_gameSession = FindObjectOfType<GameSession>();
 	}
 
 	private void Update() {
@@ -73,6 +76,7 @@ public class Enemy : MonoBehaviour
 		PlayClipAtPoint(_enemyDeathSFX, _enemyDeathSFXVolume);
 		SpawnExplosionParicles();
 		Destroy(gameObject);
+		_gameSession.AddToScore();
 	}
 
 	private void SpawnExplosionParicles() {

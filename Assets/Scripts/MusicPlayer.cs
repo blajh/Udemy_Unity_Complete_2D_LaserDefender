@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton : MonoBehaviour
+public class MusicPlayer : MonoBehaviour
 {
 	private void Awake() {
-		int gameStatusCount = FindObjectsOfType<Singleton>().Length;
+		SetUpSingleton();
+	}
+
+	private void SetUpSingleton() {
+		int gameStatusCount = FindObjectsOfType(GetType()).Length;
 		if (gameStatusCount > 1) {
 			gameObject.SetActive(false);
 			Destroy(gameObject);
