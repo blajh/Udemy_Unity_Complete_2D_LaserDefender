@@ -872,35 +872,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2459626422582048671, guid: 462980bf3b77e4e13aa37d43509e2f9f,
-        type: 3}
-      propertyPath: _waveConfigs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459626422582048671, guid: 462980bf3b77e4e13aa37d43509e2f9f,
-        type: 3}
-      propertyPath: _waveConfigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 3c0e0a2bfe7ec42fc891906f14ee0dea,
-        type: 2}
-    - target: {fileID: 2459626422582048671, guid: 462980bf3b77e4e13aa37d43509e2f9f,
-        type: 3}
-      propertyPath: _waveConfigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1e98281d9049b4a84b7429c430727ea9,
-        type: 2}
-    - target: {fileID: 2459626422582048671, guid: 462980bf3b77e4e13aa37d43509e2f9f,
-        type: 3}
-      propertyPath: _waveConfigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: d5ba0775fc5c44349aec953a7d2acc9d,
-        type: 2}
-    - target: {fileID: 2459626422582048671, guid: 462980bf3b77e4e13aa37d43509e2f9f,
-        type: 3}
-      propertyPath: _waveConfigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6204a346734314323873c34f71b0f64a,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 462980bf3b77e4e13aa37d43509e2f9f, type: 3}
 --- !u!4 &2459626422641474580 stripped
