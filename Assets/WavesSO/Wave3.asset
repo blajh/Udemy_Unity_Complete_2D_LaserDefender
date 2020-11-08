@@ -18,5 +18,5 @@ MonoBehaviour:
   _moveSpeed: 6
   _spawnPeriod: 0.5
   _spawnPeriodOffset: 0.3
-  _pathPrefab: {fileID: 2005046830266857409, guid: d01772f17a10b4286a8038e372254103,
+  _pathPrefab: {fileID: 6160295902916419477, guid: e778636377c48440797ed33f2c9daff3,
     type: 3}
