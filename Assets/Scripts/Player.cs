@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         PlayClipAtPoint(_playerDeathSFX, _playerDeathSFXVolume);
 		SpawnExplosionParicles();
 		Destroy(gameObject);
-        SceneManager.LoadScene(2);
+        FindObjectOfType<Level>().LoadGameOver();
 	}
 
 	private void SpawnExplosionParicles() {
