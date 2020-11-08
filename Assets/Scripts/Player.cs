@@ -106,10 +106,10 @@ public class Player : MonoBehaviour
 	}
 
 	private void Die() {
+		FindObjectOfType<Level>().LoadGameOver();
         PlayClipAtPoint(_playerDeathSFX, _playerDeathSFXVolume);
 		SpawnExplosionParicles();
 		Destroy(gameObject);
-        FindObjectOfType<Level>().LoadGameOver();
 	}
 
 	private void SpawnExplosionParicles() {
